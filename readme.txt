@@ -78,6 +78,63 @@ public class DocxHelper {
 
 package com.company.customXmlParser;
 
+import java.util.*;
+
+public class Stack {
+
+    private ArrayList<NodeDefault> list = null;
+
+    public Stack()
+    {
+        list = new ArrayList<>();
+    }
+
+    public void push(NodeDefault n)
+    {
+        list.add(n);
+    }
+
+    public NodeDefault pop()
+    {
+        NodeDefault toReturn = null;
+        if (list != null && !list.isEmpty()) {
+            int lastIndex = list.size()-1;
+            toReturn = list.get(lastIndex);
+            list.remove(lastIndex);
+        }
+
+        return toReturn;
+    }
+
+    public NodeDefault peek()
+    {
+        NodeDefault toReturn = null;
+        if (list != null && !list.isEmpty()) {
+            int lastIndex = list.size()-1;
+            toReturn = list.get(lastIndex);
+        }
+
+        return toReturn;
+    }
+
+    public int size(){
+        return list.size();
+    }
+
+}
+
+package com.company.customXmlParser;
+
+public enum IfDataNodeIsNull {
+
+    DontChange,
+    RemoveBindingOnly,
+    RemoveTheWholeNode
+
+}
+
+package com.company.customXmlParser;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
